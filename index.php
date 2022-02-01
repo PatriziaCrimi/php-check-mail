@@ -12,8 +12,20 @@
   'mario@gmail.com',
   'giuseppe@alice.it',
   'valentina@gmail.com'];
-  $user_email = 'mario@gmail.com'; // any email either or not present in the array
-  $message = '';
+  $user_email = 'valentina@gmail.com'; // any email either or not present in the array
+  $isEmail= false;
+  $message_position = 'The user\'s e-mail is not in the array.';
+  $message_result = 'Your e-mail ' . $user_email . ' has been added to our mailing list.';
+
+  // ********** Email check **********
+  for ($i=0; $i < count($email_list); $i++) {
+    if(in_array($user_email, $email_list)) {
+      $isEmail = true;
+      $position = $i + 1;
+      $message_position = 'The user\'s e-mail has been found in position ' . $position. ' within the array.';
+      $message_result ='Your e-mail ' . $user_email . ' is already on our e-mail list.';
+    }
+  }
 ?>
 
 <!-- ............................. HTML ............................. -->
@@ -47,9 +59,19 @@
           <div id="data-info">
             <h3>Data Information</h3>
             <p>
-              DATA INFO PROVA:
+              Emails list:
+              <?php for ($i=0; $i < count($email_list); $i++) { ?>
+                <ul>
+                  <li>
+                    <?php echo $email_list[$i]; ?>
+                  </li>
+                </ul>
+              <?php }; ?>
+            </p>
+            <p>
+              User e-mail:
               <?php
-                echo 'DATA INFO PROVA';
+                echo $user_email;
               ?>
             </p>
           </div>
@@ -60,18 +82,42 @@
             <h3>Results</h3>
             <p class="message">
               <?php
-                echo $message;
+                echo $message_position;
               ?>
             </p>
             <div class="results-box">
               <p>
-                RESULTS BOX PROVA:
                 <span>
-                  <?php
-                    echo 'PROVA';
-                  ?>
+                  SUBSCRIPTION:
                 </span>
+                  <?php
+                    echo $message_result;
+                  ?>
               </p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <!-- Tickets Prices -->
+          <div id="updated-list">
+            <h3>Updated list</h3>
+            <p>
+              Updated emails list:
+              <?php
+                if(!in_array($user_email, $email_list)) {
+                  $email_list[] = $user_email;
+                }
+                for ($i=0; $i < count($email_list); $i++) {
+              ?>
+              <ul>
+                <li>
+                  <?php echo $email_list[$i]; ?>
+                </li>
+              </ul>
+              <?php
+                };
+              ?>
+            </p>
             </div>
           </div>
         </div>

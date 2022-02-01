@@ -10,6 +10,10 @@ body {
   font-family: 'Nunito', sans-serif;  /* 300;400;600;700;800;900 */
 }
 
+ul {
+  list-style: none;
+}
+
 h1 {
   text-transform: uppercase;
   font-weight: 900;
@@ -123,6 +127,9 @@ h1::after {
 #results .results-box span {
   text-transform: uppercase;
   letter-spacing: 1.5px;
+}
+#updated-list h3 {
+  text-transform: uppercase;
 }
 
 /* ------------------- MEDIA QUERY ------------------- */
